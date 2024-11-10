@@ -1,13 +1,15 @@
-from pathlib import Path
+from collections import UserString
 
 import os
 import dotenv
 
 
+dotenv.load_dotenv()
 
-class Env:
-    def __init__(self):
-        dotenv.load_dotenv()
 
-    def __getattr__(self, name: str) -> str:
-        return os.getenv(name)
+class Var(UserString):
+    def __init__(self, name: str):
+        self.name = name
+
+    def __str__(self) -> str:
+        return os.getenv(self.name)

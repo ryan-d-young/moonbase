@@ -1,1 +1,1 @@
-from src.data.db import cmd
+from data.db import sql

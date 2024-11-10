@@ -52,6 +52,7 @@ async def add_provider(conn: asyncpg.Connection, name: str):
     )
     await conn.execute(query)
 
+
 async def add_resource(conn: asyncpg.Connection, name: str, provider_id: int):
     query = sql.INSERT_RECORDS.format(
         table="_resources", 
@@ -59,6 +60,7 @@ async def add_resource(conn: asyncpg.Connection, name: str, provider_id: int):
         values=((name, provider_id),)
     )
     await conn.execute(query)
+
 
 async def add_entity(conn: asyncpg.Connection, name: str, resource_id: int):
     query = sql.INSERT_RECORDS.format(
@@ -68,6 +70,7 @@ async def add_entity(conn: asyncpg.Connection, name: str, resource_id: int):
     )
     await conn.execute(query)
 
+
 async def add_attribute(conn: asyncpg.Connection, name: str, entity_id: int):
     query = sql.INSERT_RECORDS.format(
         table="_attributes", 
@@ -75,6 +78,7 @@ async def add_attribute(conn: asyncpg.Connection, name: str, entity_id: int):
         values=((name, entity_id),)
     )
     await conn.execute(query)
+
 
 async def add_schedule(conn: asyncpg.Connection, attribute_id: int, start_date: datetime, end_date: datetime, frequency: str):
     query = sql.INSERT_RECORDS.format(
